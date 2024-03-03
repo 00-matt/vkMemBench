@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.28)
 project(vkMemBench CXX)
 
-find_package(Vulkan REQUIRED)
+find_package(Vulkan 1.3 REQUIRED)
 
 add_executable(vkmembench src/vkcontext.cc src/vkmembench.cc)
 set_target_properties(vkmembench PROPERTIES
