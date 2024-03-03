@@ -1,0 +1,5 @@
+# -*- mode: yaml -*-
+---
+BasedOnStyle: LLVM
+AlwaysBreakTemplateDeclarations: true
+ColumnLimit: 120
