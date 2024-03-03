@@ -1,0 +1,12 @@
+// -*- mode: glsl -*-
+#version 460
+
+#extension GL_EXT_buffer_reference : enable
+
+layout(local_size_x = 32) in;
+layout(buffer_reference) buffer Buf{ uint data[]; };
+layout(push_constant) uniform PushConstants{ Buf buf; };
+
+void main() {
+  buf.data[gl_GlobalInvocationID.x] = ~buf.data[gl_GlobalInvocationID.x];
+}

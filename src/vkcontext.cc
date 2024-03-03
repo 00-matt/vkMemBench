@@ -23,8 +23,13 @@ VkDeviceMemory Buffer::allocate(std::uint32_t memory_type_mask) {
     throw std::runtime_error("unable to find memory type");
   }
 
+  VkMemoryAllocateFlagsInfo alloc_flags_info{
+      .sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO,
+      .flags = VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT,
+  };
   VkMemoryAllocateInfo alloc_ci{
       .sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO,
+      .pNext = &alloc_flags_info,
       .allocationSize = m_size,
       .memoryTypeIndex = memory_type.value(),
   };
